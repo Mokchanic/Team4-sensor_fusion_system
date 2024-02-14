@@ -61,12 +61,12 @@ void LaneKeepingSystem<PREC>::run()
         mCameraDetector->boundingBox(mFrame);
         
         // Lidar
-        std::vector<cv::Point2f> image2D= mCameraDetector->Generate2DPoints();
-        std::vector<cv::Point3f> lidar3D = mCameraDetector->Generate3DLidarPoints();
-        std::vector<cv::Point3f> vcs3D = mCameraDetector->Generate3DVCSPoints();
+        // std::vector<cv::Point2f> image2D= mCameraDetector->Generate2DPoints();
+        // std::vector<cv::Point3f> lidar3D = mCameraDetector->Generate3DLidarPoints();
+        // std::vector<cv::Point3f> vcs3D = mCameraDetector->Generate3DVCSPoints();
 
-        mCameraDetector->solvePnP(image2D, lidar3D);
-        mCameraDetector->solvePnP(image2D, vcs3D);
+        // mCameraDetector->solvePnP(image2D, lidar3D);
+        // mCameraDetector->solvePnP(image2D, vcs3D);
     }
 }
 
@@ -84,7 +84,7 @@ void LaneKeepingSystem<PREC>::scanCallback(const sensor_msgs::LaserScan::ConstPt
     // For example, print the range at some point in the scan
     int midpoint = scan->ranges.size() / 2;  // Assuming the LIDAR has 360 degrees field of view
     int idx = 504;
-    std::cout << "Ranges size: " << scan->ranges.size() << std::endl;
+    // std::cout << "Ranges size: " << scan->ranges.size() << std::endl;
     // std::cout << "midpoint: " << midpoint << ", " << scan->ranges[midpoint] << std::endl;
     // std::cout << "0 range: " << scan->ranges[0] << std::endl;
     // std::cout << "126 range: " << scan->ranges[126] << std::endl;

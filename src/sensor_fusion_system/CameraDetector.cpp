@@ -22,7 +22,7 @@ void CameraDetector<PREC>::setConfiguration(const YAML::Node& config)
 
     // Camera Matrix
     std::vector<std::vector<float>> matrixData;
-    for (const auto& row : config["CAMERA"]["CAMERA_MATRIX"]) {
+    for (const auto& row : config["CAMERA"]["CAMERA_MATRIX1"]) {
         std::vector<float> rowVector;
         for (const auto& ele : row) {
             rowVector.emplace_back(ele.as<float>());
@@ -38,7 +38,7 @@ void CameraDetector<PREC>::setConfiguration(const YAML::Node& config)
 
     // Dist Coeffs
     std::vector<float> distMatrixData;
-    for (const auto& row : config["CAMERA"]["DIST_COEFF"]) {
+    for (const auto& row : config["CAMERA"]["DIST_COEFF1"]) {
         distMatrixData.emplace_back(row.as<float>());
     }
     mDistCoeffs = cv::Mat(distMatrixData, true);
@@ -120,7 +120,7 @@ void CameraDetector<PREC>::boundingBox(const cv::Mat img)
 
 				minMaxLoc(scores, 0, &confidence, 0, &classIdPoint);
 
-				if (confidence > mConfThreshold) {
+				if (confidence > mConfThreshold && classIdPoint.x == 4) {
 					int cx = static_cast<int>(data[0] * mTemp.cols);
 					int cy = static_cast<int>(data[1] * mTemp.rows);
 					int bw = static_cast<int>(data[2] * mTemp.cols);
