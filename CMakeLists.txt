@@ -15,6 +15,7 @@ find_package(catkin REQUIRED COMPONENTS
 
 find_package(yaml-cpp REQUIRED)
 find_package(OpenCV 4.5.5 REQUIRED PATHS ~/OpenCV4/install/lib/cmake/opencv4)
+find_package(CUDA REQUIRED)
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
 
@@ -138,4 +139,5 @@ target_link_libraries(${PROJECT_NAME}_node
   ${YAML_CPP_LIBRARIES}
   ${catkin_LIBRARIES}
   ${OpenCV_LIBRARIES}
+  ${CUDA_LIBRARIES}
 )
